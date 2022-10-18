@@ -1,0 +1,31 @@
+import sys
+
+import pygame
+
+pygame.init()
+size = width,height = 800,800
+screen = pygame.display.set_mode(size,pygame.RESIZABLE)
+pygame.display.set_caption("Draw Your Furniture")
+
+is_drawing = True
+color = [255,255,255]
+radius = 10
+
+while is_drawing:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            is_drawing == True
+        elif event.type == pygame.MOUSEBUTTONUP:
+            is_drawing == False
+
+        if is_drawing == True:
+            if event.type == pygame.MOUSEMOTION:
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_CAPSLOCK:
+                    spot = pygame.mouse.get_pos()
+                    pygame.draw.circle(screen,color,spot,radius)
+
+    pygame.display.update()

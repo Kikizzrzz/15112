@@ -1,0 +1,58 @@
+import datetime
+import sys
+import time
+
+import pygame
+
+
+class Starting:
+    def __init__(self):
+        pygame.init()
+        size = width,height = 800,800
+        self.screen = pygame.display.set_mode(size,pygame.RESIZABLE)
+        self.game_page = pygame.Surface(self.screen.get_size())
+        self.game_page = self.game_page.convert()
+        pygame.display.set_caption("Forest Town")
+        self.bg = pygame.image
+        self.clock = pygame.time.Clock()
+        self.real_time = datetime.datetime.now()
+        self.music = pygame.mixer.music
+        self.game_bg = pygame.image.load("game_bg.jpg")
+
+    def Words(self,width,height):
+        font = pygame.font.Font("Black Forest.ttf",20)
+        text = font.render("Start Game",True,(255,255,255))
+        self.text_pos = text.get_rect()
+        self.screen.blit(text,(width/2,height/2))
+        
+
+    def Music(self):
+        self.music.load('music/toselli serenata.ogg')
+        self.music.set_volume(0.5) #volume set
+        self.music.play()
+
+    def bg(self):
+        if 5 < self.real_time.hour < 18:
+            self.bg.load("morning.jpg").convert()
+        elif self.real_time.hour <= 5 and self.real_time.hour >= 18:
+            self.bg.load("night.jpg").convert()
+
+    def run(self):
+        while True:
+             self.clock.tick(30)
+             buttons = pygame.mouse.get_pressed()
+             if buttons == True:
+                if pygame.mouse.get_pos() == self.text_pos:
+                 self.start_page.built(self.game_bg,self.text_pose)
+              
+             for event in pygame.event.get():
+                 if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+            
+   
+
+if __name__ == '__main__':
+    game = Starting()
+    game.run()
+pygame.display.update()

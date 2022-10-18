@@ -1,0 +1,47 @@
+import sys
+
+import pygame
+
+pygame.init()
+size = width, height = 800, 800
+screen = pygame.display.set_mode(size)
+pygame.display.set_caption("room1")
+room1 = pygame.image.load("room1.jpg").convert()
+
+MagicStairs_Down = pygame.image.load(MagicStairs_Down.png)
+MagicStairs_Down = MagicStairs_Down.convert()
+MagicStairs_Up = pygame.image.load(MagicStairs_Up.png)
+MagicStairs_Up = MagicStairs_Up.convert()
+CrudeWood_Table = pygame.image.load(CrudeWood_Table.png)
+CrudeWood_Table = CrudeWood_Table.convert()
+CrudeWood_Chair = pygame.image.load(CrudeWood_Chair.png)
+CrudeWood_Chair = CrudeWood_Chair.convert()
+
+class Furniture:
+    def __init__(self):
+        self.MagicStairs_Down = MagicStairs_Down
+        self.MagicStairs_Up = MagicStairs_Up
+        self.CrudeWood_Table = CrudeWood_Table
+
+
+is_moving = False
+screen.blit(Furniture.MagicStairs_Down,(600,30))
+pygame.display.update()
+rect = Furniture.MagicStairs_Down.get_rect()
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+        
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            is_moving = True
+        elif event.type == pygame.MOUSEBUTTONUP:
+            is_moving = False
+        if event.type == pygame.MOUSEMOTION and is_moving == True:
+            rect.move_ip(event.rel)
+

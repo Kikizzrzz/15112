@@ -1,0 +1,24 @@
+import sys
+
+import pygame
+
+import player.py
+
+class Expenditure():
+    def __init__(self,rent_room,buy_room,rent_furniture,buy_furniture):
+        super().__init__(Player)
+        self.rent_room = rent_room
+        self.buy_room = buy_room
+        self.rent_furniture = rent_furniture
+        self.buy_furniture = buy_furniture
+
+    def roomPrice(self):
+        if room_level != "top":
+            self.rent_room = "3000"
+            self.buy_room = "30000"
+        
+        else:
+            self.rent_room = "6000"
+            self.buy_room = "60000"
+
+    
